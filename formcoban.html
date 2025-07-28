@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        caption {
+            background-color: #ff4c00;
+            color: aliceblue;
+        }
+
+        p {
+            color: #243db5;
+        }
+        .text1{
+            color: #ff8751;
+        }
+        .caption1{
+            color:#0534ff ;
+            background-color: #d4fdd6;
+        }
+        .table1{
+            background-color:#fffda9;
+        }
+    </style>
+</head>
+
+<body>
+<center>
+        <!-- Phần 1 -->
+    <form action="">
+        <table>
+            <caption>SỞ THÍCH CỦA BẠN</caption>
+            <tr>
+                <td><p>Họ và tên</p></td>
+                <td><input type="text" name="yourname"></td>
+            </tr>
+            <tr>
+                <td><p>email</p></td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td><p>Sở thích</p></td>
+                <td>
+                    <div class="text1">
+                        <br><br><br>
+                        <input type="checkbox" name="hobby">Thể thao
+                        <input type="checkbox" name="hobby">Âm nhạc
+                        <input type="checkbox" name="hobby">Đọc sách
+                        <br>
+                        <input type="checkbox" name="hobby">Lướt web
+                        <input type="checkbox" name="hobby">Chơi game
+                        <input type="checkbox" name="hobby">Điện ảnh
+                        <br>
+                        <input type="checkbox" name="hobby">Du lịch
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Gửi thông tin"name="login">
+                     <input type="reset" value="Nhập lại"name="reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+<br><br><br>
+    <!-- Phần 2 -->
+     <form action="">
+        <table class="table1">
+            <caption class="caption1">ĐĂNG KÝ HỌC VIÊN</caption>
+            <tr>
+                <th><p>Họ và tên</p></th>
+                <th><input type="text" name="yourname"></th>
+            </tr>
+            <tr>
+                <TH><p>Ngày sinh</p></TH>
+                <TH><input type="text" name="date"></TH>
+            </tr>
+            <tr>
+                <th><p>Giới tính</p></th>
+                <th>
+                    <input type="radio" name="sex">Nam
+                    <input type="radio" name="sex">Nữ
+                </th>
+            </tr>
+            <tr>
+                <th><p>Địa chỉ</p></th>
+                <th><textarea name="address" id=""></textarea></th>
+            </tr>
+            <tr>
+                <th><p>Lớp</p></th>
+                <th>
+                    <section>
+                        <select name="lop1" id="">Lớp 1</select>
+                        <select name="lop2" id="">Lớp 2</select>
+                        <select name="lop3" id="">Lớp 3</select>
+                    </section>
+                </th>
+            </tr>
+            <tr>
+                <th><p>Email</p></th>
+                <th><input type="email"></th>
+            </tr>
+            <tr>
+                <th><p>Điện thoại</p></th>
+                <th><input type="tel"></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <input type="submit" value="Đăng ký" name="login">
+                     <input type="reset" value="Nhập lại" name="reset">
+                </th>
+            </tr>
+        </table>
+     </form>
+</center>
+</body>
+
+</html>
