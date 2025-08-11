@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery Bootstrap đơn giản</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .thumb {
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .thumb img {
+      transition: transform .3s ease;
+    }
+    .thumb:hover img {
+      transform: scale(1.06);
+    }
+    .card-body small { display:block; }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="mb-4">Gallery đơn giản - Bootstrap</h1>
+
+    <div class="row g-3">
+      <!-- Repeat these cols (8 sample images) -->
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1015/1200/800" data-bs-title="Cảnh núi - 1">
+          <img src="https://picsum.photos/id/1015/400/300" loading="lazy" class="card-img-top" alt="Cảnh núi">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Cảnh núi</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1025/1200/800" data-bs-title="Chó dễ thương">
+          <img src="https://picsum.photos/id/1025/400/300" loading="lazy" class="card-img-top" alt="Chó">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Chó dễ thương</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1035/1200/800" data-bs-title="Biển xanh">
+          <img src="https://picsum.photos/id/1035/400/300" loading="lazy" class="card-img-top" alt="Biển">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Biển xanh</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1045/1200/800" data-bs-title="Thành phố về đêm">
+          <img src="https://picsum.photos/id/1045/400/300" loading="lazy" class="card-img-top" alt="Thành phố">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Thành phố</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1055/1200/800" data-bs-title="Rừng xanh">
+          <img src="https://picsum.photos/id/1055/400/300" loading="lazy" class="card-img-top" alt="Rừng">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Rừng xanh</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1065/1200/800" data-bs-title="Cầu cổ">
+          <img src="https://picsum.photos/id/1065/400/300" loading="lazy" class="card-img-top" alt="Cầu">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Cầu cổ</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1075/1200/800" data-bs-title="Hoàng hôn">
+          <img src="https://picsum.photos/id/1075/400/300" loading="lazy" class="card-img-top" alt="Hoàng hôn">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Hoàng hôn</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="card thumb" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-bs-src="https://picsum.photos/id/1085/1200/800" data-bs-title="Đường phố">
+          <img src="https://picsum.photos/id/1085/400/300" loading="lazy" class="card-img-top" alt="Đường phố">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">Đường phố</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-body p-0 position-relative">
+          <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          <img id="modalImage" src="" class="img-fluid w-100 rounded" alt="">
+          <div class="p-3 bg-white rounded-bottom shadow-sm">
+            <p id="modalCaption" class="mb-0"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.thumb').forEach(function(card){
+      card.addEventListener('click', function(){
+        var src = card.getAttribute('data-bs-src');
+        var title = card.getAttribute('data-bs-title') || '';
+        var modalImg = document.getElementById('modalImage');
+        var modalCap = document.getElementById('modalCaption');
+        modalImg.src = src;
+        modalImg.alt = title;
+        modalCap.textContent = title;
+      });
+    });
+
+    var modalEl = document.getElementById('lightboxModal');
+    modalEl.addEventListener('hidden.bs.modal', function () {
+      document.getElementById('modalImage').src = '';
+      document.getElementById('modalCaption').textContent = '';
+    });
+  </script>
+</body>
+</html>
