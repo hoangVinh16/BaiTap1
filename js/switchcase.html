@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days in Month</title>
+</head>
+
+<body>
+    <input type="number" id="month" placeholder="Enter month (1-12)">
+    <button onclick="showDays()">Check Days</button>
+    <div id="result"></div>
+
+    <script>
+        function getDaysInMonth(month, year) {
+            if (month === 2) {
+                return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0) ? 29 : 28;
+            }
+            if ([4, 6, 9, 11].includes(month)) return 30;
+            return 31;
+        }
+
+        function showDays() {
+            const month = Number(document.getElementById("month").value);
+            const result = document.getElementById("result");
+
+            if (month < 1 || month > 12) {
+                result.innerHTML = "<span style='color:red'>Invalid month. Please enter 1-12.</span>";
+                return;
+            }
+
+            const year = new Date().getFullYear();
+            const days = getDaysInMonth(month, year);
+            result.innerHTML = `<b>Month ${month}</b> has <b>${days}</b> days.`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Admission</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        const age = Number(prompt("Nhập tuổi học sinh:"));
+        const score = Number(prompt("Nhập điểm xét tuyển:"));  
+        let kiemTraLop10;
+
+        if (age >= 15 && age <= 17 && score >= 5) {
+            kiemTraLop10 = true;
+        } else {
+            kiemTraLop10 = false;
+        }
+
+        const result = document.getElementById("result");
+        result.innerHTML = kiemTraLop10 
+            ? "Học sinh đủ điều kiện vào lớp 10." 
+            : "Học sinh chưa đủ điều kiện vào lớp 10.";
+    </script>
+</body>
+</html>
