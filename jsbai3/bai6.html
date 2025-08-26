@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải phương trình bậc nhất</title>
+</head>
+<body>
+    <script>
+        let a = Number(prompt("Nhập hệ số a:"));
+        let b = Number(prompt("Nhập hệ số b:"));
+
+        if (isNaN(a) || isNaN(b)) {
+            document.write("Giá trị nhập không hợp lệ.");
+        } else if (a === 0 && b === 0) {
+            document.write("Phương trình có vô số nghiệm.");
+        } else if (a === 0) {
+            document.write("Phương trình vô nghiệm.");
+        } else {
+            let x = -b / a;
+            document.write("Phương trình: " + a + "x + " + b + " = 0<br>");
+            document.write("Nghiệm của phương trình là: x = " + x.toFixed(2));
+        }
+    </script>
+</body>
+</html>

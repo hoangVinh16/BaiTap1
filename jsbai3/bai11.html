@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính thuế TNCN</title>
+</head>
+<body>
+  <script>
+    let a = parseFloat(prompt("Nhập tổng thu nhập 1 tháng (VNĐ): "));
+    let x = parseInt(prompt("Nhập số người phụ thuộc: "));
+    let giamTruBanThan = 11000000; 
+    let giamTruPhuThuoc = x * 4400000;
+
+    if (a < 0 || x < 0) {
+      document.write("Thông tin nhập vào không hợp lệ.");
+    } else {
+      let total = a - giamTruBanThan - giamTruPhuThuoc;
+
+      if (total <= 0) {
+        document.write("Bạn không phải nộp thuế TNCN.");
+      } else {
+        let thue = 0;
+        let thuNhapChiuThue = total;
+        if (thuNhapChiuThue <= 5000000) {
+          thue = thuNhapChiuThue * 0.05;
+        } else if (thuNhapChiuThue <= 10000000) {
+          thue = 250000 + (thuNhapChiuThue - 5000000) * 0.1;
+        } else if (thuNhapChiuThue <= 18000000) {
+          thue = 750000 + (thuNhapChiuThue - 10000000) * 0.15;
+        } else if (thuNhapChiuThue <= 32000000) {
+          thue = 1950000 + (thuNhapChiuThue - 18000000) * 0.2;
+        } else if (thuNhapChiuThue <= 52000000) {
+          thue = 4750000 + (thuNhapChiuThue - 32000000) * 0.25;
+        } else if (thuNhapChiuThue <= 80000000) {
+          thue = 9750000 + (thuNhapChiuThue - 52000000) * 0.3;
+        } else {
+          thue = 18150000 + (thuNhapChiuThue - 80000000) * 0.35;
+        }
+
+        document.write("Thu nhập tính thuế: " + thuNhapChiuThue.toLocaleString() + " đồng.<br>");
+        document.write("Thuế TNCN phải nộp: " + thue.toLocaleString() + " đồng.");
+      }
+    }
+  </script>
+</body>
+</html>

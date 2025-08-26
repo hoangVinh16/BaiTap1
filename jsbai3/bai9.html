@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra hình chữ nhật</title>
+</head>
+<body>
+    <script>
+        let dai = parseFloat(prompt("Nhập chiều dài của hình chữ nhật:"));
+        let rong = parseFloat(prompt("Nhập chiều rộng của hình chữ nhật:"));
+
+        if (isNaN(dai) || isNaN(rong) || dai <= 0 || rong <= 0) {
+            document.write("Kích thước không hợp lệ!");
+        } else if (dai === rong) {
+            document.write("Đây là hình vuông (một trường hợp đặc biệt của hình chữ nhật).");
+        } else {
+            document.write("Đây là hình chữ nhật.");
+        }
+    </script>
+</body>
+</html>

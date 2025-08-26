@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính thưởng doanh số</title>
+</head>
+<body>
+    <script>
+        let ds = Number(prompt("Nhập doanh số bán hàng đạt được:"));
+        let thuong = 0;
+        let phantram = 0;
+
+        if (ds < 0 || isNaN(ds)) {
+            document.write("Doanh số không hợp lệ. Vui lòng nhập lại.");
+        } else {
+            document.write("Doanh số bán hàng đạt được là: " + ds.toLocaleString() + " đồng.<br>");
+
+            if (ds < 1000000) {
+                document.write("Bạn chưa đủ điều kiện nhận thưởng.");
+            } else if (ds < 2000000) {
+                phantram = 0.05;
+            } else if (ds < 5000000) {
+                phantram = 0.10;
+            } else {
+                phantram = 0.15;
+            }
+
+            if (phantram > 0) {
+                thuong = ds * phantram;
+                document.write("Bạn được thưởng " + (phantram * 100) + "% doanh số.<br>");
+                document.write("Số tiền thưởng là: " + thuong.toLocaleString() + " đồng.");
+            }
+        }
+    </script>
+</body>
+</html>

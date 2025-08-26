@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính lãi suất tiết kiệm</title>
+</head>
+<body>
+  <h2>Tính lãi suất tiết kiệm (lãi kép)</h2>
+  <script>
+    let P = parseFloat(prompt("Nhập số tiền ban đầu (VND): "));
+    let r = parseFloat(prompt("Nhập lãi suất hàng tháng (%): "));
+    let n = parseInt(prompt("Nhập số tháng gửi: "));
+
+    if (isNaN(P) || isNaN(r) || isNaN(n) || P <= 0 || r < 0 || n <= 0) {
+      document.write("<p style='color:red'>Dữ liệu nhập vào không hợp lệ!</p>");
+    } else {
+      let tong = P;
+      document.write("<table border='1' cellspacing='0' cellpadding='5'>");
+      document.write("<tr><th>Tháng</th><th>Số tiền cuối tháng (VND)</th></tr>");
+      
+      for (let i = 1; i <= n; i++) {
+        tong = tong * (1 + r / 100);
+        document.write("<tr><td>" + i + "</td><td>" + tong.toLocaleString('vi-VN') + "</td></tr>");
+      }
+      document.write("</table>");
+      document.write("<p><b>Tổng số tiền sau " + n + " tháng: " + tong.toLocaleString('vi-VN') + " đồng</b></p>");
+    }
+  </script>
+</body>
+</html>

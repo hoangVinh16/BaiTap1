@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính diện tích hình chữ nhật</title>
+</head>
+<body>
+    <script>
+        let a = Number(prompt("Nhập chiều dài (cm):"));
+        let b = Number(prompt("Nhập chiều rộng (cm):"));
+
+        if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+            document.write("Giá trị nhập không hợp lệ. Vui lòng nhập số dương.");
+        } else {
+            let dientich = a * b;
+            let chuvi = 2 * (a + b);
+            document.write("Chiều dài: " + a + " cm<br>");
+            document.write("Chiều rộng: " + b + " cm<br>");
+            document.write("Diện tích hình chữ nhật: " + dientich + " cm²<br>");
+            document.write("Chu vi hình chữ nhật: " + chuvi + " cm");
+        }
+    </script>
+</body>
+</html>

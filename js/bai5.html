@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình</title>
+</head>
+<body>
+    <script>
+        let kt = Number(prompt("Nhập điểm kiểm tra:"));
+        let gk = Number(prompt("Nhập điểm giữa kỳ:"));
+        let ck = Number(prompt("Nhập điểm cuối kỳ:"));
+
+        let tb = ((kt + gk + ck) / 3).toFixed(2);
+
+        if (tb < 0 || tb > 10 || isNaN(tb)) {
+            document.write("Điểm trung bình không hợp lệ, vui lòng nhập lại.");
+        } else {
+            document.write("Điểm trung bình: " + tb + "<br>");
+            if (tb < 5) {
+                document.write("Bạn đạt danh hiệu HSTB.");
+            } else if (tb < 8) {
+                document.write("Bạn đạt danh hiệu HSK.");
+            } else {
+                document.write("Bạn đạt danh hiệu HSG.");
+            }
+        }
+    </script>
+</body>
+</html>

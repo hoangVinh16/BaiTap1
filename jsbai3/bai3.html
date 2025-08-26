@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính diện tích hình vuông</title>
+</head>
+<body>
+    <script>
+        let a = Number(prompt("Nhập độ dài cạnh hình vuông (cm):"));
+        
+        if (isNaN(a) || a <= 0) {
+            document.write("Giá trị nhập không hợp lệ, vui lòng nhập số dương.");
+        } else {
+            let s = a * a;
+            let p = 4 * a;
+            document.write("Cạnh hình vuông: " + a + " cm<br>");
+            document.write("Diện tích hình vuông: " + s + " cm²<br>");
+            document.write("Chu vi hình vuông: " + p + " cm");
+        }
+    </script>
+</body>
+</html>
