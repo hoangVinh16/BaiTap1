@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tổng Fibonacci</title>
+</head>
+<body>
+  <div id="ketqua"></div>
+
+  <script>
+    const fib = [0, 1];
+    while (fib.length < 20) {
+      let tiepTheo = fib[fib.length - 1] + fib[fib.length - 2];
+      fib.push(tiepTheo);
+    }
+
+    const tong = fib.reduce((acc, val) => acc + val, 0);
+    document.getElementById("ketqua").innerHTML =
+      "Tổng của 20 số đầu tiên trong dãy Fibonacci là: " + tong;
+  </script>
+</body>
+</html>

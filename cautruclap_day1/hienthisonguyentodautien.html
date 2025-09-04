@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In số nguyên tố</title>
+</head>
+<body>
+  <div id="result"></div>
+
+  <script>
+    const soLuong = Number(prompt("Nhập số lượng số nguyên tố cần in:"));
+    const output = document.getElementById("result");
+    let dem = 0;
+
+    for (let num = 2; dem < soLuong; num++) {
+      let laNguyenTo = true;
+
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          laNguyenTo = false;
+          break;
+        }
+      }
+
+      if (laNguyenTo) {
+        output.innerHTML += num + "<br>";
+        dem++;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng cửu chương</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid #000;
+      padding: 5px 12px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <table id="bang"></table>
+
+  <script>
+    const table = document.getElementById("bang");
+
+    for (let i = 1; i <= 9; i++) {
+      let row = document.createElement("tr");
+
+      for (let j = 2; j <= 9; j++) {
+        let cell = document.createElement("td");
+        cell.textContent = `${j} x ${i} = ${j * i}`;
+        row.appendChild(cell);
+      }
+
+      table.appendChild(row);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hình chữ nhật rỗng</title>
+</head>
+<body>
+  <pre id="output"></pre>
+
+  <script>
+    const rong = 15;
+    const cao = 7;
+    let ketQua = "";
+
+    for (let hang = 1; hang <= cao; hang++) {
+      for (let cot = 1; cot <= rong; cot++) {
+        if (hang === 1 || hang === cao || cot === 1 || cot === rong) {
+          ketQua += "*";
+        } else {
+          ketQua += "  "; // khoảng trắng
+        }
+      }
+      ketQua += "\n";
+    }
+
+    document.getElementById("output").textContent = ketQua;
+  </script>
+</body>
+</html>

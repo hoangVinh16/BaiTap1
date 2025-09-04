@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dãy Fibonacci</title>
+</head>
+<body>
+  <div id="ketqua"></div>
+
+  <script>
+    let so1 = 0, so2 = 1;
+    let count = 2; 
+    const output = document.getElementById("ketqua");
+
+    output.innerHTML += so1 + "<br>" + so2 + "<br>";
+
+    while (count < 20) {
+      let tiepTheo = so1 + so2;
+      output.innerHTML += tiepTheo + "<br>";
+      so1 = so2;
+      so2 = tiepTheo;
+      count++;
+    }
+  </script>
+</body>
+</html>

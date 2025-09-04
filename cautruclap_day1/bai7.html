@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 7 - FizzBuzz</title>
+</head>
+<body>
+  <ul id="ketqua"></ul>
+
+  <script>
+    const output = document.getElementById("ketqua");
+
+    for (let so = 1; so <= 100; so++) {
+      let text = "";
+
+      if (so % 3 === 0) text += "Fizz";
+      if (so % 5 === 0) text += "Buzz";
+      if (text === "") text = so;
+
+      const li = document.createElement("li");
+      li.textContent = text;
+      output.appendChild(li);
+    }
+  </script>
+</body>
+</html>

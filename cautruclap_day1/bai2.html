@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm tra nhiệt độ</title>
+</head>
+<body>
+  <div id="ketqua"></div>
+
+  <script>
+    const nhietDo = Number(prompt("Nhập nhiệt độ hiện tại: "));
+    const ketQua = 
+      nhietDo >= 100 ? "Vui lòng giảm nhiệt độ" :
+      (nhietDo > 0 && nhietDo <= 20 ? "Vui lòng tăng nhiệt độ" : "Nhiệt độ bình thường");
+
+    document.getElementById("ketqua").textContent = ketQua;
+  </script>
+</body>
+</html>

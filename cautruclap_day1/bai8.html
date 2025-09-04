@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 8: Game đoán số</title>
+</head>
+<body>
+  <button onclick="choi()">Bắt đầu chơi</button>
+
+  <script>
+    function taoSoNgauNhien(duoi, tren) {
+      return Math.floor(Math.random() * (tren - duoi + 1)) + duoi;
+    }
+
+    function choi() {
+      const gioiHanDuoi = Number(prompt("Nhập số nhỏ nhất của khoảng đoán:"));
+      const gioiHanTren = Number(prompt("Nhập số lớn nhất của khoảng đoán:"));
+
+      if (isNaN(gioiHanDuoi) || isNaN(gioiHanTren) || gioiHanDuoi >= gioiHanTren) {
+        alert("Khoảng nhập không hợp lệ!");
+        return;
+      }
+
+      const soBiMat = taoSoNgauNhien(gioiHanDuoi, gioiHanTren);
+
+      while (true) {
+        const doan = Number(prompt(`Hãy đoán một số từ ${gioiHanDuoi} đến ${gioiHanTren}:`));
+
+        if (isNaN(doan)) {
+          alert("Bạn phải nhập một số hợp lệ!");
+          continue;
+        }
+
+        if (doan === soBiMat) {
+          alert("🎉 Chúc mừng! Bạn đã đoán đúng!");
+          break;
+        } else if (doan < soBiMat) {
+          alert("Số bạn đoán nhỏ hơn đáp án, thử lại nhé!");
+        } else {
+          alert("Số bạn đoán lớn hơn đáp án, thử lại nhé!");
+        }
+      }
+    }
+  </script>
+</body>
+</html>
