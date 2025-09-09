@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3 </title>
+</head>
+
+<body>
+    <script>
+        const numbers = [5, 12, 8, 20, 7, 15, 3, 18];
+        document.write(`Mảng gốc: [${numbers.join(", ")}]<br>`);
+
+        const maxValue = Math.max(...numbers);
+
+        const total = numbers.reduce((acc, num) => acc + num, 0);
+        const average = total / numbers.length;
+
+        document.write(`Số lớn nhất trong mảng: ${maxValue}<br>`);
+        document.write(`Giá trị trung bình: ${average}`);
+    </script>
+</body>
+
+</html>

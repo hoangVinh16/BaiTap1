@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7 </title>
+</head>
+<body>
+    <script>
+        const numbers = [5, 8, 2, 9, 1, 7, 4, 6, 3, 0];
+        document.write(`Mảng ban đầu: [${numbers.join(", ")}]<br>`);
+
+        const V = Number(prompt("Nhập vào một số nguyên V:"));
+
+        const index = numbers.indexOf(V);
+
+        if (index !== -1) {
+            numbers.splice(index, 1);
+
+            numbers.push(0);
+
+            document.write(`Mảng sau khi xóa ${V}: [${numbers.join(", ")}]`);
+        } else {
+            document.write(`${V} không có trong mảng.`);
+        }
+    </script>
+</body>
+</html>

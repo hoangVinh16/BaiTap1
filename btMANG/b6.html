@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 6 </title>
+</head>
+<body>
+    <script>
+        const numbers = [4, 7, 12, 9, 1, 15, 8, 3, 10, 6];
+        document.write(`Mảng hiện tại: [${numbers.join(", ")}]<br>`);
+
+        const V = Number(prompt("Nhập vào một số nguyên V:"));
+
+        const message = numbers.includes(V) 
+            ? `Giá trị ${V} có trong mảng.` 
+            : `Giá trị ${V} không có trong mảng.`;
+
+        document.write(message);
+    </script>
+</body>
+</html>

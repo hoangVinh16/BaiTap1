@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 8 </title>
+</head>
+
+<body>
+    <script>
+        const numbers = [12, 5, 8, 20, 3, 17, 9, 1, 15, 6];
+        document.write(`Mảng gốc: [${numbers.join(", ")}]<br>`);
+
+        const sortedDesc = [...numbers].sort((a, b) => b - a);
+
+        document.write(`Mảng sau khi sắp xếp giảm dần: [${sortedDesc.join(", ")}]`);
+    </script>
+</body>
+
+</html>

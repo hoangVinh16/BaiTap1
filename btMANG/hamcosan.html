@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển mini</title>
+</head>
+
+<body>
+    <h2>Từ điển Anh → Việt</h2>
+    <input type="text" id="wordInput" placeholder="Nhập từ tiếng Anh">
+    <button onclick="translateWord()">Dịch</button>
+    <p id="output"></p>
+
+    <script>
+        // Sử dụng Object để lưu cặp từ thay vì 2 mảng
+        const dictionary = {
+            "hello": "xin chào",
+            "cat": "mèo",
+            "dog": "chó",
+            "apple": "táo",
+            "book": "sách"
+        };
+
+        function translateWord() {
+            const input = document.getElementById("wordInput").value.trim().toLowerCase();
+            const meaning = dictionary[input];
+            document.getElementById("output").textContent = meaning ?
+                `Nghĩa tiếng Việt: ${meaning}` :
+                "Không tìm thấy từ này trong từ điển!";
+        }
+    </script>
+</body>
+
+</html>
