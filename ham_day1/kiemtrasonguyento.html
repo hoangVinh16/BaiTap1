@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra số nguyên tố</title>
+</head>
+
+<body>
+    <script>
+        function isPrime(number) {
+            if (number <= 1) {
+                console.log(`${number} khong phai so nguyen to`);
+                return false;
+            }
+
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    console.log(`${number} khong phai so nguyen to`);
+                    return false;
+                }
+            }
+
+            console.log(`${number} la so nguyen to`);
+            return true;
+        }
+        let input = prompt("Nhập vào một số:");
+        let number = parseInt(input);
+        if (isPrime(number)) {
+            alert(`${number}  là số nguyên tố`);
+        } else {
+            alert(`${number}  khong số nguyên tố`);
+        }
+
+    </script>
+</body>
+
+</html>

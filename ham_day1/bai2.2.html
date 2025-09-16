@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function circleArea(r){
+            return r ** 2 * 3.14;
+        }
+        function circleCircumference(r){
+            return r * 2 * 3.14;
+        }
+        let input = prompt(" nhap ban kinh hinh tron :");
+        let number = parseInt(input);
+        let result1 = circleArea(number);
+        let result2 = circleCircumference(number)
+        alert(`dien tich cua hinh tron la ${result1} va chu vi cua hinh tron la ${result2}`);
+    </script>
+</body>
+</html>
