@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function min(num1, num2, num3) {
+            let min = num1;
+            if (num2 < min) min = num2;
+            if (num3 < min) min = num3
+            return min;
+        }
+        let x = parseInt(prompt("Nhập số nguyên thứ nhất:"));
+        let y = parseInt(prompt("Nhập số nguyên thứ hai:"));
+        let z = parseInt(prompt("Nhập số nguyên thứ ba:"));
+        alert(`số nhỏ nhất là: ${min(x,y,z)}`);
+
+
+    </script>
+</body>
+
+</html>

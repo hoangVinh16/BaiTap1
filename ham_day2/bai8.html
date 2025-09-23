@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+let input = prompt("Nhập các số nguyên, cách nhau bằng dấu phẩy (,):");
+let numbers = input.split(",").map(Number);
+
+function reverseArray(arr) {
+    return arr.reverse();
+}
+
+let reversed = reverseArray(numbers);
+alert("Mảng sau khi đảo ngược: " + reversed.join(", "));
+
+    </script>
+</body>
+</html>
