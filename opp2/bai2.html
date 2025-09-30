@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bóng đèn và công tắc</title>
+</head>
+<body>
+    <script>
+        class LightBulb {
+            constructor(state) {
+                this.state = state;
+            }
+            getState() {
+                return this.state;
+            }
+            setState(state) {
+                this.state = state;
+            }
+            switchOn() {
+                this.state = "on";
+            }
+            switchOff() {
+                this.state = "off";
+            }
+        }
+
+        class ToggleSwitch {
+            constructor(position, bulb) {
+                this.position = position;
+                this.bulb = bulb;
+            }
+            getPosition() {
+                return this.position;
+            }
+            setPosition(position) {
+                this.position = position;
+            }
+            click() {
+                if (this.position === "off") {
+                    this.position = "on";
+                    this.bulb.switchOn();
+                } else {
+                    this.position = "off";
+                    this.bulb.switchOff();
+                }
+            }
+        }
+
+        let bulb1 = new LightBulb("off");
+        let switch1 = new ToggleSwitch("off", bulb1);
+
+        document.write(`Trạng thái ban đầu của bóng đèn: ${bulb1.getState()}<br>`);
+
+        for (let i = 1; i <= 10; i++) {
+            switch1.click();
+            document.write(`Trạng thái sau khi bật tắt lần ${i}: ${bulb1.getState()}<br>`);
+        }
+    </script>
+</body>
+</html>

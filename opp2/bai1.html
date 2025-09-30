@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple and Human</title>
+</head>
+<body>
+  <script>
+    class Fruit {
+      constructor(amount) {
+        this.amount = amount;
+      }
+
+      getAmount() {
+        return this.amount;
+      }
+
+      stillHave() {
+        return this.amount > 0;
+      }
+
+      takeOne() {
+        if (this.amount > 0) {
+          this.amount--;
+        }
+      }
+    }
+
+    class Person {
+      constructor(fullName, sex, weight) {
+        this.fullName = fullName;
+        this.sex = sex;
+        this.weight = weight;
+      }
+
+      getWeight() {
+        return this.weight;
+      }
+
+      eatFruit(fruit) {
+        if (fruit.stillHave()) {
+          fruit.takeOne();
+          this.weight++;
+          document.write(`${this.fullName} ăn 1 quả táo → Cân nặng: ${this.weight}, Táo còn lại: ${fruit.getAmount()}<br>`);
+        } else {
+          document.write("Không còn táo để ăn!<br>");
+        }
+      }
+    }
+
+    // Tạo đối tượng
+    let apple = new Fruit(10);
+    let adam = new Person("Adam", "Nam", 60);
+    let eva = new Person("Eva", "Nữ", 50);
+
+    document.write(`Số lượng táo ban đầu: ${apple.getAmount()}<br>`);
+
+    // Adam ăn 6 lần
+    for (let i = 0; i < 6; i++) {
+      adam.eatFruit(apple);
+    }
+
+    // Eva ăn 5 lần
+    for (let i = 0; i < 5; i++) {
+      eva.eatFruit(apple);
+    }
+
+    document.write(`<br>Táo còn lại: ${apple.getAmount()}<br>`);
+    document.write(`Cân nặng của Adam: ${adam.getWeight()}<br>`);
+    document.write(`Cân nặng của Eva: ${eva.getWeight()}<br>`);
+  </script>
+</body>
+</html>
