@@ -3,9 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <title>Simple Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #e74c3c;
+    }
+
+    #menuList {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+      width: 250px;
+    }
+
+    #menuList li {
+      background: #fff;
+      margin: 6px 0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    #menuList li:hover {
+      transform: scale(1.03);
+      background: #f1f1f1;
+    }
+
+    input, button {
+      padding: 8px 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 150px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      cursor: pointer;
+      color: white;
+      background-color: #3498db;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .highlight {
+      background-color: #ffeaa7 !important;
+    }
+  </style>
 </head>
 <body>
-  <h1>Menu</h1>
+  <h1>🍽️ Menu</h1>
   <ul id="menuList"></ul>
 
   <input id="foodInput" type="text" placeholder="Nhập món ăn">
@@ -15,37 +78,41 @@
   <script>
     class Menu {
       constructor(listId) {
-        this.list = [];       
-        this.ul = document.getElementById(listId); 
+        this.list = [];
+        this.ul = document.getElementById(listId);
       }
 
       show() {
-        this.ul.innerHTML = ""; 
+        this.ul.innerHTML = "";
         for (let i = 0; i < this.list.length; i++) {
-          let li = document.createElement("li");   
+          let li = document.createElement("li");
           li.textContent = (i + 1) + ". " + this.list[i];
-          this.ul.appendChild(li); 
+          if (i === this.list.length - 1) {
+            li.classList.add("highlight");
+            setTimeout(() => li.classList.remove("highlight"), 1000);
+          }
+          this.ul.appendChild(li);
         }
       }
 
       add() {
         let input = document.getElementById("foodInput");
-        let food = input.value;
+        let food = input.value.trim();
         if (food) {
-          this.list.push(food); 
-          input.value = "";     
-          this.show();        
+          this.list.push(food);
+          input.value = "";
+          this.show();
         }
       }
 
       remove() {
         this.list.pop();
-        this.show(); 
+        this.show();
       }
     }
 
     let menu = new Menu("menuList");
-    menu.show(); 
+    menu.show();
   </script>
 </body>
 </html>
