@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Menu</title>
+</head>
+<body>
+  <h1>Menu</h1>
+  <ul id="menuList"></ul>
+
+  <input id="foodInput" type="text" placeholder="Nhập món ăn">
+  <button onclick="menu.add()">Thêm</button>
+  <button onclick="menu.remove()">Xoá</button>
+
+  <script>
+    class Menu {
+      constructor(listId) {
+        this.list = [];       
+        this.ul = document.getElementById(listId); 
+      }
+
+      show() {
+        this.ul.innerHTML = ""; 
+        for (let i = 0; i < this.list.length; i++) {
+          let li = document.createElement("li");   
+          li.textContent = (i + 1) + ". " + this.list[i];
+          this.ul.appendChild(li); 
+        }
+      }
+
+      add() {
+        let input = document.getElementById("foodInput");
+        let food = input.value;
+        if (food) {
+          this.list.push(food); 
+          input.value = "";     
+          this.show();        
+        }
+      }
+
+      remove() {
+        this.list.pop();
+        this.show(); 
+      }
+    }
+
+    let menu = new Menu("menuList");
+    menu.show(); 
+  </script>
+</body>
+</html>
