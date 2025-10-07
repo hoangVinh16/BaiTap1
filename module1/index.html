@@ -1,118 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Simple Menu</title>
+  <title>Quản lý Menu (OOP có Sửa/Xóa)</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 40px; 
+      background: #f8f9fa; 
     }
-
-    h1 {
-      color: #e74c3c;
+    h1 { color: #d6336c; }
+    form { 
+      display: flex; 
+      gap: 10px; 
+      margin-bottom: 20px; 
+      flex-wrap: wrap;
     }
-
-    #menuList {
-      list-style: none;
-      padding: 0;
-      margin-top: 15px;
-      width: 250px;
-    }
-
-    #menuList li {
-      background: #fff;
-      margin: 6px 0;
-      padding: 10px 15px;
+    input, button { 
+      padding: 10px; 
+      border: 1px solid #ccc; 
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s, background 0.3s;
     }
-
-    #menuList li:hover {
-      transform: scale(1.03);
-      background: #f1f1f1;
+    button { 
+      cursor: pointer; 
+      background: #d6336c; 
+      color: white; 
+      border: none; 
+      transition: 0.3s;
     }
-
-    input, button {
-      padding: 8px 12px;
-      margin: 5px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
+    button:hover { background: #a61e4d; }
+    ul { 
+      list-style: none; 
+      padding: 0; 
+      background: white; 
+      border-radius: 10px; 
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-
-    input {
-      width: 150px;
-      border: 1px solid #ccc;
+    li { 
+      padding: 10px; 
+      border-bottom: 1px solid #eee; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
     }
-
-    button {
-      cursor: pointer;
-      color: white;
-      background-color: #3498db;
-      transition: background 0.3s;
+    li:last-child { border-bottom: none; }
+    .item-info { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
     }
-
-    button:hover {
-      background-color: #2980b9;
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ddd;
     }
-
-    .highlight {
-      background-color: #ffeaa7 !important;
+    .actions button {
+      margin-left: 6px;
+      background: #6c757d;
+    }
+    .actions button:hover {
+      background: #495057;
+    }
+    .edit-btn {
+      background: #20c997;
+    }
+    .edit-btn:hover {
+      background: #138f6b;
+    }
+    .delete-btn {
+      background: #dc3545;
+    }
+    .delete-btn:hover {
+      background: #a71d2a;
     }
   </style>
 </head>
 <body>
-  <h1>🍽️ Menu</h1>
+  <h1>🍜 Quản lý Menu </h1>
+
+  <form id="menuForm">
+    <input id="name" type="text" placeholder="Tên món" required>
+    <input id="price" type="number" placeholder="Giá (VNĐ)" required>
+    <input id="image" type="file" accept="image/*">
+    <button type="submit">➕ Thêm món</button>
+  </form>
+
   <ul id="menuList"></ul>
 
-  <input id="foodInput" type="text" placeholder="Nhập món ăn">
-  <button onclick="menu.add()">Thêm</button>
-  <button onclick="menu.remove()">Xoá</button>
-
   <script>
-    class Menu {
-      constructor(listId) {
-        this.list = [];
-        this.ul = document.getElementById(listId);
+
+    class MenuItem {
+      constructor(id, name, price, imageURL) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.imageURL = imageURL;
       }
 
-      show() {
-        this.ul.innerHTML = "";
-        for (let i = 0; i < this.list.length; i++) {
-          let li = document.createElement("li");
-          li.textContent = (i + 1) + ". " + this.list[i];
-          if (i === this.list.length - 1) {
-            li.classList.add("highlight");
-            setTimeout(() => li.classList.remove("highlight"), 1000);
-          }
-          this.ul.appendChild(li);
-        }
-      }
 
-      add() {
-        let input = document.getElementById("foodInput");
-        let food = input.value.trim();
-        if (food) {
-          this.list.push(food);
-          input.value = "";
-          this.show();
-        }
-      }
+      render(menuManager) {
+        const li = document.createElement("li");
+        li.dataset.id = this.id;
 
-      remove() {
-        this.list.pop();
-        this.show();
+        const infoDiv = document.createElement("div");
+        infoDiv.classList.add("item-info");
+
+        const img = document.createElement("img");
+        img.src = this.imageURL;
+
+        const info = document.createElement("span");
+        info.textContent = `${this.name} - ${this.price} VNĐ`;
+
+        infoDiv.appendChild(img);
+        infoDiv.appendChild(info);
+
+        const actions = document.createElement("div");
+        actions.classList.add("actions");
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "✏️ Sửa";
+        editBtn.classList.add("edit-btn");
+        editBtn.addEventListener("click", () => menuManager.editItem(this.id));
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "🗑️ Xóa";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.addEventListener("click", () => menuManager.deleteItem(this.id));
+
+        actions.appendChild(editBtn);
+        actions.appendChild(deleteBtn);
+
+        li.appendChild(infoDiv);
+        li.appendChild(actions);
+
+        return li;
       }
     }
 
-    let menu = new Menu("menuList");
-    menu.show();
+
+    class MenuManager {
+      constructor(formId, listId) {
+        this.form = document.getElementById(formId);
+        this.list = document.getElementById(listId);
+        this.count = 1;
+        this.items = [];
+        this.editingId = null;
+
+        this.init();
+      }
+
+      init() {
+        this.form.addEventListener("submit", (e) => this.handleSubmit(e));
+      }
+
+
+      getFormData() {
+        const name = this.form.querySelector("#name").value.trim();
+        const price = this.form.querySelector("#price").value.trim();
+        const imageInput = this.form.querySelector("#image");
+        const file = imageInput.files[0];
+        return { name, price, file };
+      }
+
+      async handleSubmit(e) {
+        e.preventDefault();
+        const { name, price, file } = this.getFormData();
+        if (!name || !price) return;
+
+        let imageURL = "";
+
+        if (file) {
+          imageURL = await this.readFile(file);
+        } else if (this.editingId) {
+
+          imageURL = this.items.find(i => i.id === this.editingId).imageURL;
+        }
+
+        if (this.editingId) {
+          this.updateItem(this.editingId, name, price, imageURL);
+        } else {
+          const item = new MenuItem(this.count, name, price, imageURL);
+          this.items.push(item);
+          this.list.appendChild(item.render(this));
+          this.count++;
+        }
+
+        this.resetForm();
+      }
+
+      readFile(file) {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.readAsDataURL(file);
+        });
+      }
+
+
+      deleteItem(id) {
+        this.items = this.items.filter(item => item.id !== id);
+        this.renderList();
+      }
+
+
+      editItem(id) {
+        const item = this.items.find(i => i.id === id);
+        if (!item) return;
+
+        this.form.querySelector("#name").value = item.name;
+        this.form.querySelector("#price").value = item.price;
+        this.form.querySelector("#image").value = "";
+
+        this.editingId = id;
+        this.form.querySelector("button[type='submit']").textContent = "💾 Cập nhật món";
+      }
+
+
+      updateItem(id, name, price, imageURL) {
+        const item = this.items.find(i => i.id === id);
+        if (item) {
+          item.name = name;
+          item.price = price;
+          item.imageURL = imageURL;
+        }
+        this.renderList();
+        this.editingId = null;
+        this.form.querySelector("button[type='submit']").textContent = "➕ Thêm món";
+      }
+
+
+      renderList() {
+        this.list.innerHTML = "";
+        this.items.forEach(item => {
+          this.list.appendChild(item.render(this));
+        });
+      }
+
+      resetForm() {
+        this.form.reset();
+      }
+    }
+
+    const app = new MenuManager("menuForm", "menuList");
   </script>
 </body>
 </html>
