@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let n = prompt("Nhập số phần tử (1-50):");
+        n = Number(n);
+
+        if (isNaN(n) || n <= 0 || n > 50) {
+            alert("Số không hợp lệ, vui lòng nhập số nguyên từ 1 đến 50");
+        } else {
+            let arr = [];
+            for (let i = 0; i < n; i++) {
+                arr[i] = Number(prompt("Nhập phần tử thứ " + (i + 1) + ":"));
+            }
+
+            let sum = 0, count = 0;
+            for (let i = 0; i < n; i += 2) {
+                if (arr[i] % 2 !== 0) {
+                    sum += arr[i];
+                    count++;
+                }
+            }
+
+            let average = count > 0 ? sum / count : 0;
+            alert("Trung bình cộng các số lẻ ở vị trí chẵn: " + average);
+        }
+
+    </script>
+</body>
+
+</html>

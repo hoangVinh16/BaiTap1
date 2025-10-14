@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f6f8;
+      margin-top: 40px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f7fc;
+    }
+
+    tr:hover {
+      background-color: #dceeff;
+    }
+
+    .button-group {
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 8px 18px;
+      margin: 6px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .tinhtrang-con {
+      color: green;
+      font-weight: bold;
+    }
+
+    .tinhtrang-het {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Quản lí sách</h2>
+
+  <table id="bookTable">
+    <tr>
+      <th>Mã số sách</th>
+      <th>Tên sách</th>
+      <th>Năm xuất bản</th>
+      <th>Số quyển</th>
+      <th>Tình trạng</th>
+    </tr>
+  </table>
+
+  <div class="button-group">
+    <button onclick="themSachDaCo()">Thêm sách đã có</button>
+    <button onclick="themSachMoi()">Thêm sách mới</button>
+    <button onclick="muonSach()">Mượn sách</button>
+    <button onclick="hienThiNhieuNhat()">Hiển thị sách nhiều nhất</button>
+  </div>
+
+  <script>
+    class Sach {
+      constructor(ma, ten, nam, soquyen) {
+        this.ma = ma;
+        this.ten = ten;
+        this.nam = nam;
+        this.soquyen = soquyen;
+        this.tinhtrang = soquyen > 0;
+      }
+    }
+
+    let dsSach = [
+      new Sach("12345", "Toán", 2000, 3),
+      new Sach("23456", "Văn", 1998, 4),
+      new Sach("37456", "Tiếng Anh", 1999, 0)
+    ];
+
+    function hienThi(ds = dsSach) {
+      let table = document.getElementById("bookTable");
+      table.innerHTML = `
+        <tr>
+          <th>Mã số sách</th>
+          <th>Tên sách</th>
+          <th>Năm xuất bản</th>
+          <th>Số quyển</th>
+          <th>Tình trạng</th>
+        </tr>
+      `;
+      ds.forEach(s => {
+        let tt = s.tinhtrang
+          ? `<span class='tinhtrang-con'>Còn</span>`
+          : `<span class='tinhtrang-het'>Hết</span>`;
+        table.innerHTML += `
+          <tr>
+            <td>${s.ma}</td>
+            <td>${s.ten}</td>
+            <td>${s.nam}</td>
+            <td>${s.soquyen}</td>
+            <td>${tt}</td>
+          </tr>`;
+      });
+    }
+
+    function kiemTra(ma, ten, nam, soquyen) {
+      if (!/^[1-5][0-9]{4}$/.test(ma)) {
+        alert("Mã sách sai định dạng! (Phải có 5 ký tự, bắt đầu từ 1–5)");
+        return false;
+      }
+      if (ten.trim() === "") {
+        alert("Tên sách không được để trống!");
+        return false;
+      }
+      if (!/^[0-9]{4}$/.test(nam)) {
+        alert("Năm xuất bản phải gồm 4 chữ số!");
+        return false;
+      }
+      if (isNaN(soquyen) || soquyen < 0) {
+        alert(" Số quyển phải là số >= 0!");
+        return false;
+      }
+      return true;
+    }
+
+
+    function themSachMoi() {
+      let ma = prompt("Nhập mã sách:");
+      let ten = prompt("Nhập tên sách:");
+      let nam = prompt("Nhập năm xuất bản:");
+      let soquyen = Number(prompt("Nhập số quyển:"));
+      if (!kiemTra(ma, ten, nam, soquyen)) return;
+
+      let sachMoi = new Sach(ma, ten, nam, soquyen);
+      dsSach.push(sachMoi);
+      alert("Thêm thành công!");
+      hienThi();
+    }
+
+
+    function themSachDaCo() {
+      let ma = prompt("Nhập mã sách cần thêm quyển:");
+      let sach = dsSach.find(s => s.ma === ma);
+      if (!sach) {
+        alert("Không tìm thấy mã sách!");
+        return;
+      }
+      let so = Number(prompt("Nhập số quyển muốn thêm:"));
+      if (isNaN(so) || so <= 0) {
+        alert("Số quyển không hợp lệ!");
+        return;
+      }
+      sach.soquyen += so;
+      sach.tinhtrang = true;
+      hienThi();
+    }
+
+    function muonSach() {
+      let ma = prompt("Nhập mã sách cần mượn:");
+      let sach = dsSach.find(s => s.ma === ma);
+      if (!sach) {
+        alert("Không tìm thấy mã sách!");
+        return;
+      }
+      if (sach.soquyen <= 0) {
+        alert("Sách đã hết!");
+        return;
+      }
+      sach.soquyen--;
+      sach.tinhtrang = sach.soquyen > 0;
+      hienThi();
+    }
+
+    function hienThiNhieuNhat() {
+      let max = Math.max(...dsSach.map(s => s.soquyen));
+      let sachNhieu = dsSach.filter(s => s.soquyen === max);
+      hienThi(sachNhieu);
+    }
+
+    hienThi();
+  </script>
+
+</body>
+</html>

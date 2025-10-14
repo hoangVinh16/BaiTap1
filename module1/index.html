@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <title>Quản lý Menu (OOP có Sửa/Xóa)</title>
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      margin: 40px; 
-      background: #f8f9fa; 
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f8f9fa;
     }
-    h1 { color: #d6336c; }
-    form { 
-      display: flex; 
-      gap: 10px; 
-      margin-bottom: 20px; 
+
+    h1 {
+      color: #d6336c;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
-    input, button { 
-      padding: 10px; 
-      border: 1px solid #ccc; 
+
+    input,
+    button {
+      padding: 10px;
+      border: 1px solid #ccc;
       border-radius: 8px;
     }
-    button { 
-      cursor: pointer; 
-      background: #d6336c; 
-      color: white; 
-      border: none; 
+
+    button {
+      cursor: pointer;
+      background: #d6336c;
+      color: white;
+      border: none;
       transition: 0.3s;
     }
-    button:hover { background: #a61e4d; }
-    ul { 
-      list-style: none; 
-      padding: 0; 
-      background: white; 
-      border-radius: 10px; 
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+    button:hover {
+      background: #a61e4d;
     }
-    li { 
-      padding: 10px; 
-      border-bottom: 1px solid #eee; 
-      display: flex; 
-      align-items: center; 
+
+    ul {
+      list-style: none;
+      padding: 0;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
     }
-    li:last-child { border-bottom: none; }
-    .item-info { 
-      display: flex; 
-      align-items: center; 
-      gap: 15px; 
+
+    li:last-child {
+      border-bottom: none;
     }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
     img {
       width: 60px;
       height: 60px;
@@ -57,27 +75,34 @@
       border-radius: 8px;
       border: 1px solid #ddd;
     }
+
     .actions button {
       margin-left: 6px;
       background: #6c757d;
     }
+
     .actions button:hover {
       background: #495057;
     }
+
     .edit-btn {
       background: #20c997;
     }
+
     .edit-btn:hover {
       background: #138f6b;
     }
+
     .delete-btn {
       background: #dc3545;
     }
+
     .delete-btn:hover {
       background: #a71d2a;
     }
   </style>
 </head>
+
 <body>
   <h1>🍜 Quản lý Menu </h1>
 
@@ -230,8 +255,6 @@
         this.editingId = null;
         this.form.querySelector("button[type='submit']").textContent = "➕ Thêm món";
       }
-
-
       renderList() {
         this.list.innerHTML = "";
         this.items.forEach(item => {
@@ -243,8 +266,8 @@
         this.form.reset();
       }
     }
-
     const app = new MenuManager("menuForm", "menuList");
   </script>
 </body>
+
 </html>
